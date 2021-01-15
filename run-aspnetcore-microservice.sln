@@ -1,6 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "run-aspnetcore-microservice", "run-aspnetcore-microservice\run-aspnetcore-microservice.csproj", "{8B2244AC-39FE-41EA-8836-2551E1E09DC9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{26DBFA30-F3A7-48A7-957B-4BC83ECA9A38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Catalog", "Catalog", "{9FF608AC-5A67-4E4B-AA52-4D5882DEB45F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Catalog.API", "src\Catalog\Catalog.API\Catalog.API.csproj", "{504759C9-8075-4C7C-8132-DF777B79DD43}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +12,13 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8B2244AC-39FE-41EA-8836-2551E1E09DC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8B2244AC-39FE-41EA-8836-2551E1E09DC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8B2244AC-39FE-41EA-8836-2551E1E09DC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8B2244AC-39FE-41EA-8836-2551E1E09DC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504759C9-8075-4C7C-8132-DF777B79DD43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504759C9-8075-4C7C-8132-DF777B79DD43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504759C9-8075-4C7C-8132-DF777B79DD43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504759C9-8075-4C7C-8132-DF777B79DD43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9FF608AC-5A67-4E4B-AA52-4D5882DEB45F} = {26DBFA30-F3A7-48A7-957B-4BC83ECA9A38}
+		{504759C9-8075-4C7C-8132-DF777B79DD43} = {9FF608AC-5A67-4E4B-AA52-4D5882DEB45F}
 	EndGlobalSection
 EndGlobal
