@@ -42,6 +42,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - "ConnectionStrings:Redis=basketdb:6379"
+      - "EventBus:HostName=rabbitmq"
     depends_on:
       - basketdb
       - rabbitmq
