@@ -1,0 +1,6 @@
+## Image laden aus dem DockerHub
+docker pull mcr.microsoft.com/mssql/server
+
+## aus dem Image einen Container erzeugen
+docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 --name msOrderSql --hostname msOrderSql -d mcr.microsoft.com/mssql/server 
+

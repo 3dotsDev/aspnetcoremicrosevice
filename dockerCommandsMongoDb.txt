@@ -1,0 +1,47 @@
+## Image laden aus dem DockerHub
+docker pull mongo    
+
+## aus dem Image einen Container erzeugen
+docker run -d  -p 27017:27017 --name msCatalogMongo mongo
+
+##zugriff auf die Commandline des Containers     
+docker exec -it msCatalogMongo /bin/bash     
+
+## innerhalb der commandline in den Mongo Modus wechseln ( commands in Mongo DB)
+mongo    
+
+## zeigt alle DBs an
+show dbs   
+
+## erstellt neue Datenbank
+use CatalogDb    
+
+## erzeugt neue "Tabelle" Products
+db.createCollection('Products') 
+
+## Spielt Daten in die erstelle Tabelle ein
+db.Products.insertMany(    
+    [
+        {
+            "Name": "Asus Laptop",
+            "Category": "Computer",
+            "Summary": "Summary",
+            "Description": "Description",
+            "ImageFile": "ImageFile",
+            "Price": 54.93
+        },
+        {
+            "Name": "HP Laptop",
+            "Category": "Computer",
+            "Summary": "Summary",
+            "Description": "Description",
+            "ImageFile": "ImageFile",
+            "Price": 88.93
+        }
+    ])
+
+## Ausgabe von Daten aus der Tabelle gibt mit Pretty Json  aus 
+db.Products.find({}).pretty()
+
+##  Daten aus der Tabelle loeschen
+db.Products.remove({})

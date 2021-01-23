@@ -1,0 +1,5 @@
+## Image laden aus dem DockerHub
+docker pull rabbitmq:management-alpine
+
+## Conainer erzeugen aus dem Image  port-> 5672 RabbitQueue  port -> 15672 ManagemnetDashboard
+docker run -d --hostname my-rabbit --name some-rabbit -p 15672:15672 -p 5672:5672 rabbitmq:management-alpine

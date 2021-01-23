@@ -1,0 +1,26 @@
+## Image laden aus dem DockerHub
+docker pull redis
+
+## aus dem Image einen Container erzeugen
+docker run -d  -p 6379:6379 --name msBasketRedis redis
+
+##zugriff auf die Commandline des Containers     
+docker exec -it msBasketRedis /bin/bash  
+
+## innerhalb der commandline in den Redis Modus wechseln ( commands in Redis DB)
+redis-cli
+
+## check redis  works -> muss PONG ausgeben
+ping 
+
+## neuen Eintrag erstellen "key" ist der Key und "value" ist der Wert der diesem Key zugewiesen ist
+set key value
+
+## ausgabe des Werts fuer den Key "key"
+get key
+
+## Beispiel mit Daten
+set name Reto
+
+## Ausgabe der Beispieldaten fuer den Key "name" -> Reto
+get name
