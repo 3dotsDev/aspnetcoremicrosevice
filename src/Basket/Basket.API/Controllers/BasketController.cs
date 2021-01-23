@@ -83,7 +83,7 @@ namespace Basket.API.Controllers
             }
             catch (Exception e)
             {
-                Console.WriteLine($"error sending eventbusmessage message: {e.Message}");
+                Console.WriteLine($"error sending eventbus message message: {e.Message}");
                 throw;
             }
 
