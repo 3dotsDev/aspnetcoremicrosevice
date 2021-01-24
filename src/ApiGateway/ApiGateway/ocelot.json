@@ -77,7 +77,7 @@
       ]
     },
     {
-      "DownstreamPathTemplate": "/api/v1/Basket/Checkout",
+      "DownstreamPathTemplate": "/api/v1/Basket/CheckoutBasket",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
