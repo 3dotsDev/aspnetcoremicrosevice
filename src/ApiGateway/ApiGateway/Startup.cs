@@ -13,6 +13,7 @@ namespace ApiGateway
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddOcelot();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
