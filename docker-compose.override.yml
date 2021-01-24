@@ -8,7 +8,7 @@ services:
       - /home/dalmaso/mongodb/data/catalog
     ports:
       - "27017:27017"
-      
+
   basketdb:
     container_name: basketdb
     restart: always
@@ -16,25 +16,22 @@ services:
       - /home/dalmaso/redisdb/data/basket
     ports:
       - "6379:6379"
-      
+
   orderingdb:
     container_name: orderingdb
-    restart: always
-    volumes:
-      - /home/dalmaso/mssqldb/data/ordering
     environment:
       SA_PASSWORD: "yourStrong(!)Password"
       ACCEPT_EULA: "Y"
     ports:
       - "1433:1433"
-      
+
   rabbitmq:
     container_name: msrabbitmq
     restart: always
     ports:
       - "5672:5672"
       - "15672:15672"
-        
+
   catalog.api:
     container_name: catalogapi
     environment:
@@ -47,7 +44,7 @@ services:
       - ${HOME}/.aspnet/https:/root/.aspnet/https/
     ports:
       - "8000:80"
-        
+
   basket.api:
     container_name: basketapi
     environment:
@@ -68,7 +65,7 @@ services:
     restart: on-failure
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "ConnectionStrings:Server=localhost; Database=OrderDb; User Id=sa; Password=yourStrong(!)Password;"
+      - "ConnectionStrings:OrderConnection=Server=orderingdb; Database=OrderDb; User Id=sa; Password=yourStrong(!)Password;"
       - "EventBus:HostName=msrabbitmq"
     depends_on:
       - orderingdb
