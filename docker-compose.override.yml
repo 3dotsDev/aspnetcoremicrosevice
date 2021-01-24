@@ -17,8 +17,19 @@ services:
     ports:
       - "6379:6379"
       
+  orderingdb:
+    container_name: orderingdb
+    restart: always
+    volumes:
+      - /home/dalmaso/mssqldb/data/ordering
+    environment:
+      SA_PASSWORD: "yourStrong(!)Password"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1433:1433"
+      
   rabbitmq:
-    container_name: rabbitmq
+    container_name: msrabbitmq
     restart: always
     ports:
       - "5672:5672"
@@ -41,8 +52,8 @@ services:
     container_name: basketapi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - "ConnectionStrings:Redis=basketdb:6379"
-      - "EventBus:HostName=rabbitmq"
+      - "ConnectionStrings:RedisDatabase=basketdb:6379"
+      - "EventBus:HostName=msrabbitmq"
     depends_on:
       - basketdb
       - rabbitmq
@@ -51,3 +62,19 @@ services:
       - ${HOME}/.aspnet/https:/root/.aspnet/https/
     ports:
       - "8001:80"
+
+  ordering.api:
+    container_name: orderingapi
+    restart: on-failure
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - "ConnectionStrings:Server=localhost; Database=OrderDb; User Id=sa; Password=yourStrong(!)Password;"
+      - "EventBus:HostName=msrabbitmq"
+    depends_on:
+      - orderingdb
+      - rabbitmq
+    volumes:
+      - ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets
+      - ${HOME}/.aspnet/https:/root/.aspnet/https/
+    ports:
+      - "8002:80"
