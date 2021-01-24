@@ -6,7 +6,6 @@ using Ordering.Application.Mapper;
 using Ordering.Application.Queries;
 using Ordering.Application.Responses;
 using Ordering.Core.Repositories;
-using Ordering.Infrastructure.Data;
 
 namespace Ordering.Application.Handlers
 {
